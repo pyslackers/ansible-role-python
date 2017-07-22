@@ -1,6 +1,8 @@
 pyslackers.python
 =========
 
+[![Build Status](https://travis-ci.org/pyslackers/ansible-role-python.svg?branch=master)](https://travis-ci.org/pyslackers/ansible-role-python)
+
 Python role for ansible. This supports multiple python versions thanks to pythonz.
 
 Requirements
