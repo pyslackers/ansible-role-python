@@ -12,6 +12,7 @@ install:
   - python --version
   - ansible --version
   - "printf '[defaults]\nroles_path = ../' > ansible.cfg"
+  - "printf 'requests==2.18.4' > /opt/requirements.txt"
 script:
   - ansible-lint tasks/main.yml
   - ansible-playbook -i tests/inventory --syntax-check --list-tasks tests/test.yml
@@ -23,3 +24,6 @@ script:
     || (echo 'Idempotence test: fail' && exit 1)
   - stat /usr/local/pythonz/pythons/CPython-3.6.2/bin/python
   - stat /usr/local/pythonz/pythons/CPython-3.6.3/bin/python
+  - /opt/test_env/env_1/bin/python --version == 'Python 3.6.1'
+  - /opt/test_env/env_1/bin/pip freeze | grep -q 'requests==2.18.4' && exit 0 || exit 1
+  - /opt/test_env/env_2/bin/python --version == 'Python 3.6.2'

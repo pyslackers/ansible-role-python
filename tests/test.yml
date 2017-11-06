@@ -4,5 +4,13 @@
     python_versions:
       - "3.6.3"
       - "3.6.2"
+    virtualenvs:
+      env_1:
+        path: /opt/test_env/env_1
+        version: "3.6.1"
+        requirements: /opt/requirements.txt
+      env_2:
+        path: /opt/test_env/env_2
+        version: "3.6.2"
   roles:
     - ansible-role-python

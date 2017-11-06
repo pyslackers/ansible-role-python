@@ -1,0 +1,47 @@
+---
+- include_tasks: python.yml
+  with_items:
+    - "{{ virtualenv.value.version }}"
+  loop_control:
+    loop_var: python_version
+
+- name: Virtualenv exist
+  stat:
+    path: "{{ virtualenv.value.path }}/bin/python"
+  register: current_env
+
+- name: "Verify {{ virtualenv.key }} python version"
+  command: "{{ virtualenv.value.path }}/bin/python --version"
+  register: current_python_version
+  changed_when: False
+  when:
+    - current_env.stat.exists
+
+- name: "Wrong python version in {{ virtualenv.key }}"
+  file:
+    state: absent
+    path: "{{ virtualenv.value.path }}"
+    force: yes
+  when:
+    - not current_python_version|skipped
+    - virtualenv.value.version not in current_python_version.stdout
+
+- name: "Create environment {{ virtualenv.key }}"
+  pip:
+    virtualenv: "{{ virtualenv.value.path }}"
+    virtualenv_command: "/usr/local/pythonz/pythons/CPython-{{ virtualenv.value.version }}/bin/python -m venv"
+    state: latest
+    name: pip
+
+- name: Update setuptools
+  pip:
+    virtualenv: "{{ virtualenv.value.path }}"
+    state: latest
+    name: setuptools
+
+- name: Requirements
+  pip:
+    virtualenv: "{{ virtualenv.value.path }}"
+    requirements: "{{ virtualenv.value.requirements }}"
+  when:
+    - virtualenv.value.requirements is defined
