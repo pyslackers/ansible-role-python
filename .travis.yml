@@ -22,3 +22,4 @@ script:
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
   - stat /usr/local/pythonz/pythons/CPython-3.6.2/bin/python
+  - stat /usr/local/pythonz/pythons/CPython-3.6.3/bin/python

@@ -1,11 +1,14 @@
 ---
-- name: "Install python {{ version }}"
-  command: "/usr/local/pythonz/bin/pythonz install {{ version }}"
+- name: "Install python {{ python_version }}"
+  command: "/usr/local/pythonz/bin/pythonz install {{ python_version }}"
   args:
-    creates: "/usr/local/pythonz/pythons/CPython-{{ version }}/bin/python"
+    creates: "/usr/local/pythonz/pythons/CPython-{{ python_version }}/bin/python"
 
-- name: "Install virtualenv for python {{ version }}"
+- name: "Update pip & setuptools for python {{ python_version }}"
   pip:
-    executable: "/usr/local/pythonz/pythons/CPython-{{ version }}/bin/pip3"
-    name: virtualenv
+    executable: "/usr/local/pythonz/pythons/CPython-{{ python_version }}/bin/pip3"
+    name: "{{ item }}"
     state: latest
+  with_items:
+    - pip
+    - setuptools

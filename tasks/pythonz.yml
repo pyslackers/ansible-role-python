@@ -24,7 +24,7 @@
     force: no
     repo: https://github.com/saghul/pythonz.git
     dest: /usr/src/pythonz
-    version: c3fcfa8876eda7fcafe55ae244d6884a4d540aeb
+    version: master
   register: new_pythonz_release
 
 - name: Install pythonz
