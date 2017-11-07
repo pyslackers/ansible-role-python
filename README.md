@@ -14,6 +14,9 @@ Role Variables
 --------------
 
 * `python_versions`: List of valid python 3 versions to install.
+* `pythonz_repo`: Git url to the pythonz repository (default to: https://github.com/saghul/pythonz.git)
+* `pythonz_version`: Version of pythonz to download (default to: master)
+
 
 Dependencies
 ------------
