@@ -22,9 +22,9 @@
 - name: Download Pythonz
   git:
     force: no
-    repo: https://github.com/saghul/pythonz.git
+    repo: "{{ pythonz_repo }}"
     dest: /usr/src/pythonz
-    version: master
+    version: "{{ pythonz_version }}"
   register: new_pythonz_release
 
 - name: Install pythonz
