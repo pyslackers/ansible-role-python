@@ -31,18 +31,20 @@ Example Playbook
 ----------------
 
 ```yml
-- role: pyslackers.python
-  python_versions:
-    - "3.6.2"
-    - "3.6.3"
-  virtualenvs:
-    env_1:
-      path: /opt/env_1
-      version: "3.6.1"
-      requirements: requirements.txt
-    env_2:
-      path: /opt/env_2
-      version: "3.6.2"
+- include_role:
+    name: pyslackers.python
+  vars:
+     python_versions:
+       - "3.6.2"
+       - "3.6.3"
+     virtualenvs:
+       env_1:
+         path: /opt/env_1
+         version: "3.6.2"
+         requirements: requirements.txt
+       env_2:
+         path: /opt/env_2
+         version: "3.6.3"
 ```
 
 License
