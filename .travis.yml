@@ -27,3 +27,4 @@ script:
   - /opt/test_env/env_1/bin/python --version == 'Python 3.6.1'
   - /opt/test_env/env_1/bin/pip freeze | grep -q 'requests==2.18.4' && exit 0 || exit 1
   - /opt/test_env/env_2/bin/python --version == 'Python 3.6.2'
+  - /opt/test_env/env_2/bin/pip --version == '8.0.0'

@@ -14,13 +14,16 @@ Role Variables
 --------------
 
 * `python_versions`: List of valid python 3 versions to install.
-* `virtualenvs`: Dict of virtual environment to create. With keys:
-    * `path`: Virtual environment directory
-    * `version`: Virtual environment python version
-    * `requirements`: Requirements.txt file to install
-* `pythonz_repo`: Git url to the pythonz repository (default to: https://github.com/saghul/pythonz.git)
-* `pythonz_version`: Version of pythonz to download (default to: master)
-
+* `virtualenvs`: Dict of virtual environment to create.
+    * `path`: Virtual environment directory.
+    * `version`: Virtual environment python version.
+    * `requirements`: Requirements.txt file to install.
+    * `pip_version`: Virtual environment pip version (default to `latest`).
+    * `setuptools_version`: Virtual environment setuptools version (default to `latest`).
+* `pythonz_repo`: Git url to the pythonz repository (default to `https://github.com/saghul/pythonz.git`).
+* `pythonz_version`: Version of pythonz to download (default to `master`).
+* `pip_version`: Pythonz pythons interpreter pip version (default to `latest`).
+* `setuptools_version`: Pythonz pythons interpreter setuptools version (default to `latest`).
 
 Dependencies
 ------------
@@ -43,6 +46,7 @@ Example Playbook
     env_2:
       path: /opt/env_2
       version: "3.6.2"
+      pip_version: "8.0.1"
 ```
 
 License

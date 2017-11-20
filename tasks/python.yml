@@ -7,8 +7,9 @@
 - name: "Update pip & setuptools for python {{ python_version }}"
   pip:
     executable: "/usr/local/pythonz/pythons/CPython-{{ python_version }}/bin/pip3"
-    name: "{{ item }}"
-    state: latest
+    name: "{{ item.name }}"
+    version: "{{ item.version }}"
+    state: "{{ item.state }}"
   with_items:
-    - pip
-    - setuptools
+    - {name: pip, state: "{{ 'present' if pip_version is defined else 'latest' }}", version: "{{ pip_version | default(omit) }}"}
+    - {name: setuptools, state: "{{ 'present' if setuptools_version is defined else 'latest' }}", version: "{{ setuptools_version | default(omit) }}"}
