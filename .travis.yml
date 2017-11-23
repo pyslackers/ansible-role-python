@@ -16,9 +16,9 @@ install:
 script:
   - ansible-lint tasks/main.yml
   - ansible-playbook -i tests/inventory --syntax-check --list-tasks tests/test.yml
-  - ansible-playbook -i tests/inventory --connection=local --sudo -vvvv tests/test.yml -u root
+  - ansible-playbook -i tests/inventory --connection=local --become -vvvv tests/test.yml -u root
   - >
-    ansible-playbook -i tests/inventory --connection=local --sudo -vvvv tests/test.yml -u root
+    ansible-playbook -i tests/inventory --connection=local --become -vvvv tests/test.yml -u root
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
