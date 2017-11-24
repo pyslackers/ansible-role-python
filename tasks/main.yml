@@ -12,8 +12,3 @@
   loop_control:
     loop_var: virtualenv
   when: virtualenvs is defined
-
-- name: Debug
-  changed_when: True
-  debug:
-    msg: blablabla
