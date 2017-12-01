@@ -5,6 +5,7 @@
     state: latest
     force: yes
   with_items:
+    - git
     - build-essential
     - zlib1g-dev
     - libbz2-dev
