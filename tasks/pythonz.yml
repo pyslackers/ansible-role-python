@@ -4,6 +4,7 @@
     pkg: "{{ item }}"
     state: latest
     force: yes
+    update_cache: yes
   with_items:
     - build-essential
     - zlib1g-dev
