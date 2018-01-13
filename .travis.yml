@@ -34,3 +34,4 @@ script:
   - docker exec --tty $container_id env TERM=xterm /opt/test_env/env_1/bin/pip freeze | grep -q 'requests==2.18.4' && exit 0 || exit 1
   - docker exec --tty $container_id env TERM=xterm /opt/test_env/env_2/bin/python --version == 'Python 3.6.2'
   - docker exec --tty $container_id env TERM=xterm /opt/test_env/env_2/bin/pip --version == '8.0.0'
+  - docker exec --tty $container_id env TERM=xterm /opt/test_env/env_3/bin/python --version == '2.7.14'

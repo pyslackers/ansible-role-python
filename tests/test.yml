@@ -13,5 +13,8 @@
         path: /opt/test_env/env_2
         version: "3.6.2"
         pip_version: "8.0.0"
+      env_3:
+        path: /opt/test_env/env_3
+        version: 2.7.14
   roles:
     - ansible-role-python
