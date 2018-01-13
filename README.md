@@ -3,17 +3,12 @@ pyslackers.python
 
 [![Build Status](https://travis-ci.org/pyslackers/ansible-role-python.svg?branch=master)](https://travis-ci.org/pyslackers/ansible-role-python)
 
-Python3 role for ansible. This supports multiple python versions thanks to pythonz.
-
-Requirements
-------------
-
-None
+Python role for ansible. This supports multiple python versions thanks to pythonz.
 
 Role Variables
 --------------
 
-* `python_versions`: List of valid python 3 versions to install.
+* `python_versions`: List of valid python versions to install.
 * `virtualenvs`: Dict of virtual environment to create.
     * `path`: Virtual environment directory.
     * `version`: Virtual environment python version.
@@ -24,11 +19,6 @@ Role Variables
 * `pythonz_version`: Version of pythonz to download (default to `master`).
 * `pip_version`: Pythonz pythons interpreter pip version (default to `latest`).
 * `setuptools_version`: Pythonz pythons interpreter setuptools version (default to `latest`).
-
-Dependencies
-------------
-
-None
 
 Example Playbook
 ----------------
@@ -53,8 +43,3 @@ License
 -------
 
 MIT
-
-Author Information
-------------------
-
-None

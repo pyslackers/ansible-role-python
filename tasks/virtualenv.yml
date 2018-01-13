@@ -24,7 +24,7 @@
     force: yes
   when:
     - not current_python_version|skipped
-    - virtualenv.value.version not in current_python_version.stdout
+    - virtualenv.value.version not in current_python_version.stdout and virtualenv.value.version not in current_python_version.stderr
 
 - name: "Create environment {{ virtualenv.key }}"
   pip:
@@ -33,6 +33,17 @@
     state: "{{ 'present' if virtualenv.value.pip_version is defined else 'latest' }}"
     name: pip
     version: "{{ virtualenv.value.pip_version | default(omit) }}"
+  when: "virtualenv.value.version[0] == '3'"
+
+- name: "Create environment {{ virtualenv.key }}"
+  pip:
+    virtualenv: "{{ virtualenv.value.path }}"
+    virtualenv_command: "/usr/local/pythonz/pythons/CPython-{{ virtualenv.value.version }}/bin/virtualenv"
+    virtualenv_python: "/usr/local/pythonz/pythons/CPython-{{ virtualenv.value.version }}/bin/python"
+    state: "{{ 'present' if virtualenv.value.pip_version is defined else 'latest' }}"
+    name: pip
+    version: "{{ virtualenv.value.pip_version | default(omit) }}"
+  when: "virtualenv.value.version[0] == '2'"
 
 - name: Update setuptools
   pip:
