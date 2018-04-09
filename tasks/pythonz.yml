@@ -40,5 +40,5 @@
   args:
     chdir: /usr/local
   when:
-    - new_pythonz_release|changed
-    - install_pythonz|skipped
+    - new_pythonz_release is changed
+    - install_pythonz is skipped

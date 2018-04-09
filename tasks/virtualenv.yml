@@ -23,7 +23,7 @@
     path: "{{ virtualenv.value.path }}"
     force: yes
   when:
-    - not current_python_version|skipped
+    - not current_python_version is skipped
     - virtualenv.value.version not in current_python_version.stdout and virtualenv.value.version not in current_python_version.stderr
 
 - name: "Create environment {{ virtualenv.key }}"
