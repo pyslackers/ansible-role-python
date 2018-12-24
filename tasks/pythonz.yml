@@ -19,6 +19,7 @@
     - libpcap-dev
     - liblzma-dev
     - libpcre3-dev
+    - libffi-dev
 
 - name: Download Pythonz
   git:
